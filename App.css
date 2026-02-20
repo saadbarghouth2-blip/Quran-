@@ -1,0 +1,190 @@
+/* App-specific styles */
+
+/* Smooth page transitions */
+.page-transition {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Active navigation item */
+.nav-active {
+  @apply text-emerald-600;
+}
+
+.nav-active::after {
+  content: '';
+  @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-emerald-600;
+}
+
+/* Card hover lift effect */
+.card-lift {
+  @apply transition-all duration-300;
+}
+
+.card-lift:hover {
+  @apply -translate-y-1 shadow-lg;
+}
+
+/* Quran text specific styling */
+.quran-text {
+  font-family: 'Scheherazade New', 'Amiri', serif;
+  font-size: 1.75rem;
+  line-height: 2.5;
+  text-align: right;
+  word-spacing: 0.15em;
+}
+
+/* Verse highlight */
+.verse-highlight {
+  @apply bg-emerald-100 dark:bg-emerald-900/50 rounded-lg px-2 py-1;
+}
+
+/* Bookmark indicator */
+.bookmark-indicator {
+  @apply absolute top-0 right-0 w-0 h-0 border-t-8 border-r-8 border-t-amber-500 border-r-transparent;
+}
+
+/* Progress bar animation */
+.progress-animated {
+  @apply transition-all duration-500 ease-out;
+}
+
+/* Achievement unlock animation */
+@keyframes achievementUnlock {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.achievement-unlock {
+  animation: achievementUnlock 0.5s ease-out;
+}
+
+/* Confetti animation for rewards */
+@keyframes confetti {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.confetti {
+  @apply absolute w-3 h-3 rounded-full;
+  animation: confetti 3s ease-out forwards;
+}
+
+/* Game card styling */
+.game-card {
+  @apply relative overflow-hidden;
+}
+
+.game-card::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 transition-opacity;
+}
+
+.game-card:hover::before {
+  @apply opacity-100;
+}
+
+/* Audio visualizer bars */
+@keyframes audioBar {
+  0%, 100% {
+    height: 20%;
+  }
+  50% {
+    height: 100%;
+  }
+}
+
+.audio-bar {
+  @apply w-1 bg-emerald-500 rounded-full;
+  animation: audioBar 0.5s ease-in-out infinite;
+}
+
+.audio-bar:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.audio-bar:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.audio-bar:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+/* Streak badge */
+.streak-badge {
+  @apply relative;
+}
+
+.streak-badge::before {
+  content: '';
+  @apply absolute inset-0 bg-orange-500 rounded-full animate-ping opacity-20;
+}
+
+/* Level badge */
+.level-badge {
+  @apply bg-gradient-to-br from-amber-400 to-amber-600 text-white font-bold;
+}
+
+/* Points badge */
+.points-badge {
+  @apply bg-gradient-to-br from-emerald-400 to-emerald-600 text-white font-bold;
+}
+
+/* Dark mode specific adjustments */
+.dark .quran-text {
+  @apply text-emerald-100;
+}
+
+.dark .verse-number {
+  @apply bg-emerald-800 text-emerald-200;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .quran-text {
+    font-size: 1.25rem;
+    line-height: 2;
+  }
+  
+  .bismillah {
+    font-size: 1.5rem;
+  }
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  @apply outline-2 outline-offset-2 outline-emerald-500;
+}
+
+/* Selection color */
+::selection {
+  @apply bg-emerald-200 dark:bg-emerald-800 text-emerald-900 dark:text-emerald-100;
+}

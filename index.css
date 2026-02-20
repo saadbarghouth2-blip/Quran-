@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&family=Scheherazade+New:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --app-bottom-nav-height: 64px;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 168 76% 29%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 168 50% 95%;
+    --secondary-foreground: 168 76% 29%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 168 50% 95%;
+    --accent-foreground: 168 76% 29%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 168 30% 90%;
+    --input: 168 30% 90%;
+    --ring: 168 76% 29%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 168 76% 29%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 168 50% 95%;
+    --sidebar-accent-foreground: 168 76% 29%;
+    --sidebar-border: 168 30% 90%;
+    --sidebar-ring: 168 76% 29%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 0 0% 98%;
+    --card: 222 47% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 168 60% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 30% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 222 30% 15%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 222 30% 15%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 222 30% 15%;
+    --input: 222 30% 15%;
+    --ring: 168 60% 45%;
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 168 60% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 30% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 222 30% 15%;
+    --sidebar-ring: 168 60% 45%;
+  }
+
+  @media (min-width: 640px) {
+    :root {
+      --app-bottom-nav-height: 68px;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Cairo', 'Amiri', system-ui, sans-serif;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding-top: env(safe-area-inset-top);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  /* Spiritual Islamic visual system */
+  .spiritual-page-bg {
+    background-color: #f8f4e8;
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(16, 116, 89, 0.12), transparent 40%),
+      radial-gradient(circle at 82% 8%, rgba(168, 121, 23, 0.12), transparent 36%),
+      linear-gradient(180deg, #fbf7ed 0%, #f2ead8 100%);
+  }
+
+  .dark .spiritual-page-bg {
+    background-color: #0e1f1a;
+    background-image:
+      radial-gradient(circle at 14% 10%, rgba(25, 147, 107, 0.22), transparent 42%),
+      radial-gradient(circle at 90% 4%, rgba(176, 131, 35, 0.16), transparent 32%),
+      linear-gradient(180deg, #0f1f1a 0%, #0b1713 100%);
+  }
+
+  .spiritual-surface {
+    border: 1px solid #e5d2a6;
+    background: linear-gradient(145deg, #fffaf0 0%, #f7efdd 100%);
+    box-shadow: 0 10px 24px rgba(118, 92, 42, 0.08);
+  }
+
+  .dark .spiritual-surface {
+    border-color: #315043;
+    background: linear-gradient(145deg, #122720 0%, #102019 100%);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .islamic-ornament {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .islamic-ornament::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image:
+      radial-gradient(circle at 16px 16px, rgba(255, 255, 255, 0.22) 1.6px, transparent 1.6px),
+      radial-gradient(circle at 48px 48px, rgba(255, 255, 255, 0.14) 1.2px, transparent 1.2px);
+    background-size: 64px 64px;
+  }
+
+  .islamic-ornament > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .dhikr-strip {
+    border: 1px solid rgba(181, 136, 50, 0.34);
+    background: linear-gradient(90deg, rgba(255, 247, 222, 0.95) 0%, rgba(251, 240, 207, 0.95) 100%);
+    color: #7a5a16;
+    font-family: 'Amiri', 'Scheherazade New', serif;
+  }
+
+  .dark .dhikr-strip {
+    border-color: rgba(172, 144, 70, 0.4);
+    background: linear-gradient(90deg, rgba(38, 56, 45, 0.85) 0%, rgba(34, 49, 41, 0.85) 100%);
+    color: #ebd8a2;
+  }
+
+  .app-page-shell {
+    min-height: 100dvh;
+  }
+
+  .app-page-main {
+    padding-bottom: calc(var(--app-bottom-nav-height) + env(safe-area-inset-bottom) + 1rem);
+  }
+
+  @media (max-width: 420px) {
+    .app-page-main {
+      padding-bottom: calc(var(--app-bottom-nav-height) + env(safe-area-inset-bottom) + 1.25rem);
+    }
+
+    .font-quran {
+      font-size: 1.35em;
+      line-height: 2.25;
+    }
+  }
+
+  /* Arabic Font Classes */
+  .font-arabic {
+    font-family: 'Amiri', 'Scheherazade New', serif;
+    line-height: 2;
+  }
+  
+  .font-quran {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: 1.5em;
+    line-height: 2.5;
+  }
+  
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-slate-100 dark:bg-slate-800 rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-emerald-300 dark:bg-emerald-700 rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-emerald-400 dark:bg-emerald-600;
+  }
+  
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600;
+  }
+  
+  /* Card Hover Effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  /* Button Shine Effect */
+  .btn-shine {
+    @apply relative overflow-hidden;
+  }
+  
+  .btn-shine::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full;
+    animation: shine 2s infinite;
+  }
+  
+  @keyframes shine {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Verse Number Style */
+  .verse-number {
+    @apply inline-flex items-center justify-center w-8 h-8 mx-1 rounded-full bg-emerald-100 text-emerald-600 text-sm font-bold;
+  }
+  
+  /* Dark Mode Verse Number */
+  .dark .verse-number {
+    @apply bg-emerald-900 text-emerald-300;
+  }
+  
+  /* Surah Header */
+  .surah-header {
+    @apply text-center py-8 mb-8 border-b-2 border-emerald-200 dark:border-emerald-800;
+  }
+  
+  /* Bismillah Style */
+  .bismillah {
+    @apply text-3xl font-arabic text-emerald-600 dark:text-emerald-400 text-center my-8;
+  }
+  
+  /* Progress Ring Animation */
+  @keyframes progress-ring {
+    0% {
+      stroke-dashoffset: 100;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  /* Floating Animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Pulse Glow */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
+    }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  /* Streak Fire Animation */
+  @keyframes fire {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  
+  .animate-fire {
+    animation: fire 0.5s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  /* RTL Support */
+  .rtl {
+    direction: rtl;
+  }
+  
+  /* Text Shadow */
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Glass Effect */
+  .glass {
+    @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md;
+  }
+  
+  /* Hide Scrollbar */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    @apply bg-white text-black;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .card {
+    @apply border-2;
+  }
+}
